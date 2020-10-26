@@ -1,10 +1,13 @@
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'api',
+  host: process.env.DB_SERVER,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 db.connect((error, result) => {
   if (error) console.log(error);
@@ -12,8 +15,5 @@ db.connect((error, result) => {
     console.log('db connected');
   }
 });
-// db.query('select * from student', (error, result) => {
-//   if (!error) res.json(result);
-//   else res.json(error);
-// });
+
 module.exports = db;
