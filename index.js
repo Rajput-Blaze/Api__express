@@ -91,7 +91,7 @@ app.delete('/api/students/:id', (req, res) => {
   });
 });
 
-app.listen(3000, (error) => {
+app.listen(process.env.PORT||3000, (error) => {
   if (error) throw error.message;
   console.log('listen on port', 3000);
 });
